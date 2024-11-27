@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import { fetchDatabase } from '../../lib/notion.ts';
+
+const {post} = Astro.props
+// const posts = await fetchDatabase();
+// const post = posts.find((p) => p.slug === Astro.params.slug);
+
+// if (!post) {
+//   throw new Error('Post not found');
+// }
+
+export async function getStaticPaths() {
+  const posts = await fetchDatabase();
+
+  return posts.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+
+---
+<Layout title="Welcome to Astro.">
+	<main>
+<article class="prose prose-lg mx-auto mt-8 max-w-3xl">
+  {post.content}
+</article>
+</main>
+</Layout> 

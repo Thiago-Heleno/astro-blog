@@ -1,0 +1,15 @@
+---
+import { fetchDatabase } from '../lib/notion.ts';
+import Layout from '../layouts/Layout.astro';
+const posts = await fetchDatabase();
+---
+<Layout title='Posts'>
+<h1>Blog Posts</h1>
+<ul>
+  {posts.map((post) => (
+    <li>
+      <a href={`./posts/${post.slug}`}>{post.title}</a> - {post.date}
+    </li>
+  ))}
+</ul>
+</Layout>

@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Custom Palette */
+    --background: 240 100% 97%; /* Equivalent to #FFF6E9 */
+    --foreground: 240 100% 5%; /* Adjusted for contrast */
+    --card: 240 100% 97%;
+    --card-foreground: 240 100% 5%;
+    --popover: 240 100% 97%;
+    --popover-foreground: 240 100% 5%;
+    --primary: 243 67% 42%; /* Equivalent to #4335A7 */
+    --primary-foreground: 240 100% 97%; /* Light text on primary */
+    --secondary: 202 69% 74%; /* Equivalent to #80C4E9 */
+    --secondary-foreground: 240 100% 5%; /* Dark text on secondary */
+    --muted: 240 100% 97%; /* Muted is lighter */
+    --muted-foreground: 243 67% 42%; /* Use primary for muted foreground */
+    --accent: 25 100% 66%; /* Equivalent to #FF7F3E */
+    --accent-foreground: 240 100% 97%; /* Light text on accent */
+    --destructive: 25 100% 66%; /* Reusing accent as destructive */
+    --destructive-foreground: 240 100% 97%; /* Light text on destructive */
+    --border: 240 100% 90%; /* Soft border */
+    --input: 240 100% 90%; /* Input border matches */
+    --ring: 243 67% 42%; /* Primary color for focus rings */
+    --chart-1: 243 67% 42%;
+    --chart-2: 202 69% 74%;
+    --chart-3: 240 100% 97%;
+    --chart-4: 25 100% 66%;
+    --chart-5: 243 67% 42%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 100% 5%; /* Dark background */
+    --foreground: 240 100% 97%; /* Light text */
+    --card: 240 100% 5%;
+    --card-foreground: 240 100% 97%;
+    --popover: 240 100% 5%;
+    --popover-foreground: 240 100% 97%;
+    --primary: 243 67% 42%;
+    --primary-foreground: 240 100% 97%;
+    --secondary: 202 69% 30%; /* Darker shade of #80C4E9 */
+    --secondary-foreground: 240 100% 97%;
+    --muted: 240 100% 14%; /* Muted background */
+    --muted-foreground: 240 100% 63%;
+    --accent: 25 100% 66%; /* Accent color for dark mode */
+    --accent-foreground: 240 100% 97%;
+    --destructive: 25 100% 66%;
+    --destructive-foreground: 240 100% 97%;
+    --border: 240 100% 14%;
+    --input: 240 100% 14%;
+    --ring: 202 69% 74%; /* Secondary for focus rings */
+    --chart-1: 243 67% 42%;
+    --chart-2: 202 69% 30%;
+    --chart-3: 240 100% 5%;
+    --chart-4: 25 100% 66%;
+    --chart-5: 202 69% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
