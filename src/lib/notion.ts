@@ -32,6 +32,10 @@ export async function fetchDatabase() {
   return response.results.map((page) => {
     // Use a type assertion to validate the page's properties
     const typedPage = page as TypedPage;
+    let combinedContent = ""; // Initialize an empty string
+    typedPage.properties.Content.rich_text.forEach((item) => {
+      combinedContent += item?.text?.content || ""; // Append each rich text content to the combined string
+    });
 
     return {
       id: typedPage.id,
@@ -39,7 +43,7 @@ export async function fetchDatabase() {
         typedPage.properties.Title.rich_text[0]?.text.content || "Untitled",
       slug: typedPage.properties.Slug.title[0]?.text.content || "",
       date: typedPage.properties.Date.date.start,
-      content: typedPage.properties.Content.rich_text[0]?.text.content || "",
+      content: combinedContent,
     };
   });
 }

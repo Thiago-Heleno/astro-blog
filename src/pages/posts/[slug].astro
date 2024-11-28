@@ -3,25 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 
 import { fetchDatabase } from '../../lib/notion.ts';
 
-const {post} = Astro.props
-// const posts = await fetchDatabase();
-// const post = posts.find((p) => p.slug === Astro.params.slug);
+const posts = await fetchDatabase();
+const post = posts.find((p) => p.slug === Astro.params.slug);
 
-// if (!post) {
-//   throw new Error('Post not found');
-// }
-
-export async function getStaticPaths() {
-  const posts = await fetchDatabase();
-
-  return posts.map((post) => {
-    return {
-      params: { slug: post.slug },
-      props: { post },
-    };
-  });
+if (!post) {
+  throw new Error('Post not found');
 }
-
 ---
 <Layout title="Welcome to Astro.">
 	<main>
