@@ -7,7 +7,7 @@ const sortedPosts = posts
   .map((post) => ({
     slug: post.url, // Automatically generated URL for the post
     title: post.frontmatter.title,
-    date: post.frontmatter.pubDate,
+    date: post.frontmatter.date,
   }))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date (newest first)
 ---
