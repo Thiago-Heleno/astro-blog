@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+const posts = await Astro.glob('../pages/blog/*.md');
+
+// Map posts to extract metadata and sort them by date
+const sortedPosts = posts
+  .map((post) => ({
+    slug: post.url, // Automatically generated URL for the post
+    title: post.frontmatter.title,
+    date: post.frontmatter.pubDate,
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // Sort by date (newest first)
+---
+<Layout title="Posts">
+  <h1>Blog Posts</h1>
+  <ul>
+    {sortedPosts.map((post) => (
+      <li>
+        <a href={post.slug}>{post.title}</a> - {post.date}
+      </li>
+    ))}
+  </ul>
+</Layout>
